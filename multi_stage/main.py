@@ -179,6 +179,7 @@ def convert_data(data_type):
                 if(data_type == 'test'):
                     
                     std_sents.append(tmp)
+    
     with open(des_file, 'w', encoding='utf-8') as output_file:
         for item in sentences_and_content:
             output_file.write(str(item) + '\n')
