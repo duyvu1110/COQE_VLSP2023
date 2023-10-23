@@ -4,7 +4,7 @@ import torch
 import numpy as np
 
 from data_utils import shared_utils
-from ..main import std_sents
+
 
 class BaseEvaluation(object):
     def __init__(self, config, elem_col=None, ids_to_tags=None, fold=0, save_model=False):
