@@ -58,15 +58,17 @@ class DataGenerator(object):
 
         if self.config.model_mode == "bert":
             data_dict['bert_token'] = shared_utils.get_token_col(sent_col, bert_tokenizer=self.bert_tokenizer, dim=1)
-            
+
                 # print('bert',data_dict['bert_token'][0])
                 # print('stand',data_dict['standard_token'][0])
             mapping_col = shared_utils.token_mapping_bert(data_dict['bert_token'], data_dict['standard_token'])
             if(data_type == 'test'): 
                 data_dict['mapping_col'] = mapping_col
-            label_col = cpc.convert_vi_label_dict_by_mapping(label_col, mapping_col)
+            if(data_type == 'train'):
+                
+                label_col = cpc.convert_vi_label_dict_by_mapping(label_col, mapping_col)
 
-            tuple_pair_col = cpc.convert_vi_tuple_pair_by_mapping(tuple_pair_col, mapping_col)
+                tuple_pair_col = cpc.convert_vi_tuple_pair_by_mapping(tuple_pair_col, mapping_col)
 
             data_dict['input_ids'] = shared_utils.bert_data_transfer(
                 self.bert_tokenizer,
