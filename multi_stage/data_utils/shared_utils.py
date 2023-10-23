@@ -498,10 +498,10 @@ def token_mapping_bert(bert_token_col, gold_token_col):
                     bert_length -= 2
                 
                         
-            print(bert_length, token_length)
+            # print(bert_length, token_length)
             if(bert_length!=token_length):
-                print(seq_bert_token[bert_index])
-                print(seq_gold_token[token_index])
+                print(seq_bert_token)
+                print(seq_gold_token)
             assert bert_length == token_length, "appear mapping error!"
             # check_utils.check_mapping_process(seq_map, seq_gold_token, seq_bert_token)
 
