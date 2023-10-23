@@ -466,7 +466,8 @@ def token_mapping_bert(bert_token_col, gold_token_col):
         seq_bert_token, seq_gold_token = bert_token_col[index], gold_token_col[index]
         # print('seq_bert_token', seq_bert_token)
         # print('seq_gold_token', seq_gold_token)
-        
+        if(seq_gold_token[0] == ''):
+            continue
         while bert_index < len(seq_bert_token) and token_index < len(seq_gold_token):
             seq_map[token_index] = [bert_index]
 
