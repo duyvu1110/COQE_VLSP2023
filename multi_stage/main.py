@@ -356,7 +356,6 @@ def main():
             predict_pair_model, config, test_pair_loader, test_pair_eval,
             test_pair_parameters, mode="pair", polarity=False, initialize=(False, False)
         )
-        print(data_gene.test_data_dict['mapping_col'][0], '\n', data_gene.test_data_dict['sentences'][0])
         shared_utils.calculate_average_measure(test_pair_eval, global_pair_eval)
         global_pair_eval.avg_model("./ModelResult/" + model_name + "/test_pair_result.txt")
         global_pair_eval.store_result_to_csv([model_name], "result.csv")
@@ -495,7 +494,6 @@ def main():
             model_parameters, optimizer_parameters, model_name, feature_type
         )
         print(test_pair_eval.polarity_hat)
-    print('keys', data_gene.test_data_dict.keys())
     if config.stage_model == "first":
         global_eval.avg_model("./ModelResult/" + model_name + "/test_extraction_result.txt")
         global_eval.store_result_to_csv([model_name], "result.csv")
