@@ -285,18 +285,18 @@ def pair_stage_model_main(config, pair_representation, make_pair_label, pair_eva
 
     for epoch in range(40):
         pair_stage_model_train(pair_model, pair_optimizer, train_pair_loader, config, epoch)
-        pair_stage_model_test(
-            pair_model, config, dev_pair_loader, dev_pair_eval,
-            dev_pair_parameters, mode="pair", polarity=False, initialize=(False, True)
-        )
+        # pair_stage_model_test(
+        #     pair_model, config, dev_pair_loader, dev_pair_eval,
+        #     dev_pair_parameters, mode="pair", polarity=False, initialize=(False, True)
+        # )
 
     # get optimize pair model.
     predict_pair_model = torch.load(dev_pair_parameters[1])
     test_pair_parameters = ["./ModelResult/" + model_name + "/test_pair_result.txt", None]
-    pair_stage_model_test(
-        predict_pair_model, config, dev_pair_loader, dev_pair_eval,
-        test_pair_parameters, mode="pair", polarity=False, initialize=(False, False)
-    )
+    # pair_stage_model_test(
+    #     predict_pair_model, config, dev_pair_loader, dev_pair_eval,
+    #     test_pair_parameters, mode="pair", polarity=False, initialize=(False, False)
+    # )
 
     # get representation by is_pair label filter.
     dev_polarity_representation = cpc.get_after_pair_representation(dev_pair_eval.y_hat, dev_pair_representation)
@@ -305,10 +305,10 @@ def pair_stage_model_main(config, pair_representation, make_pair_label, pair_eva
 
     for epoch in range(40):
         pair_stage_model_train(polarity_model, polarity_optimizer, train_polarity_loader, config, epoch)
-        pair_stage_model_test(
-            polarity_model, config, dev_polarity_loader, dev_pair_eval,
-            dev_polarity_parameters, mode="polarity", polarity=True, initialize=(True, False)
-        )
+        # pair_stage_model_test(
+        #     polarity_model, config, dev_polarity_loader, dev_pair_eval,
+        #     dev_polarity_parameters, mode="polarity", polarity=True, initialize=(True, False)
+        # )
 
     print("===================================test===================================")
     predict_pair_model = torch.load(dev_pair_parameters[1])
@@ -317,10 +317,10 @@ def pair_stage_model_main(config, pair_representation, make_pair_label, pair_eva
     test_pair_parameters = ["./ModelResult/" + model_name + "/test_pair_result.txt", None]
     test_polarity_parameters = ["./ModelResult/" + model_name + "/test_pair_result.txt", None]
 
-    pair_stage_model_test(
-        predict_pair_model, config, test_pair_loader, test_pair_eval,
-        test_pair_parameters, mode="pair", polarity=False, initialize=(False, False)
-    )
+    # pair_stage_model_test(
+    #     predict_pair_model, config, test_pair_loader, test_pair_eval,
+    #     test_pair_parameters, mode="pair", polarity=False, initialize=(False, False)
+    # )
 
     shared_utils.calculate_average_measure(test_pair_eval, global_pair_eval)
     global_pair_eval.avg_model("./ModelResult/" + model_name + "/test_pair_result.txt")
@@ -333,10 +333,10 @@ def pair_stage_model_main(config, pair_representation, make_pair_label, pair_eva
     test_polarity_representation = cpc.get_after_pair_representation(test_pair_eval.y_hat, test_pair_representation)
     test_polarity_loader = data_loader_utils.get_loader([test_polarity_representation], 1)
 
-    pair_stage_model_test(
-        predict_polarity_model, config, test_polarity_loader, test_pair_eval,
-        test_polarity_parameters, mode="polarity", polarity=True, initialize=(True, True)
-    )
+    # pair_stage_model_test(
+    #     predict_polarity_model, config, test_polarity_loader, test_pair_eval,
+    #     test_polarity_parameters, mode="polarity", polarity=True, initialize=(True, True)
+    # )
 
     # add average measure.
-    shared_utils.calculate_average_measure(test_pair_eval, global_pair_eval)
+    # shared_utils.calculate_average_measure(test_pair_eval, global_pair_eval)

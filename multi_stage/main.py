@@ -353,13 +353,13 @@ def main():
 
         test_pair_loader = data_loader_utils.get_loader([test_pair_representation], 1)
 
-        train_test_utils.pair_stage_model_test(
-            predict_pair_model, config, test_pair_loader, test_pair_eval,
-            test_pair_parameters, mode="pair", polarity=False, initialize=(False, False)
-        )
-        shared_utils.calculate_average_measure(test_pair_eval, global_pair_eval)
-        global_pair_eval.avg_model("./ModelResult/" + model_name + "/test_pair_result.txt")
-        global_pair_eval.store_result_to_csv([model_name], "result.csv")
+        # train_test_utils.pair_stage_model_test(
+        #     predict_pair_model, config, test_pair_loader, test_pair_eval,
+        #     test_pair_parameters, mode="pair", polarity=False, initialize=(False, False)
+        # )
+        # shared_utils.calculate_average_measure(test_pair_eval, global_pair_eval)
+        # global_pair_eval.avg_model("./ModelResult/" + model_name + "/test_pair_result.txt")
+        # global_pair_eval.store_result_to_csv([model_name], "result.csv")
 
         shared_utils.clear_global_measure(global_pair_eval)
         shared_utils.clear_optimize_measure(test_pair_eval)
