@@ -82,9 +82,10 @@ def get_necessary_parameters(args):
                   "program_mode": args.program_mode}
 
     return param_dict
-std_sents = []
+
 def convert_data(data_type,file_name = ''):
     folder_path = ''
+    std_sents = []
     if data_type == 'train':
         folder_path = '../data/smartphone/VLSP2023_ComOM_training_v2'
         des_file = '../data/smartphone/train.txt'
@@ -183,8 +184,9 @@ def convert_data(data_type,file_name = ''):
     with open(des_file, 'w', encoding='utf-8') as output_file:
         for item in sentences_and_content:
             output_file.write(str(item) + '\n')
+    return std_sents
             
-def main(a):    
+def main():    
     # get program configure
     args = TerminalParser()
     # set random seed
@@ -211,16 +213,16 @@ def main(a):
     # else:
     #     data_gene = coae13_utils.DataGenerator(config)
     
-    convert_data('train')
+    s = convert_data('train')
     
-    convert_data('dev')
-    for i in range(1,2):
+    a = convert_data('dev')
+    for i in range(1,25):
       if(i>=10):
         filename = f"./dev_00{i}.txt"
       else:
         filename = f"./dev_000{i}.txt"
 
-      convert_data('test',file_name = filename)
+      std_sents = convert_data('test',file_name = filename)
       data_gene = kesserl14_utils.DataGenerator(config)
       data_gene.generate_data()
 
@@ -512,4 +514,4 @@ def main(a):
 
 
 if __name__ == "__main__":
-    main(1)
+    main()
