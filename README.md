@@ -9,7 +9,7 @@ Label).
 We use dataset in Vietnamese language which is provided by VLSP2023 ComOM shared task organizers
 
 ## Methods
-We fine-tuned the multi-stage model used for bench-mark this task in English and Chinese from Ziheng Liu, Rui Xia, and Jianfei Yu. Comparative Opinion Quintuple Extraction from Product Reviews. EMNLP 2021.
+We fine-tuned the multi-stage model used for benchmarking this task in English and Chinese from Ziheng Liu, Rui Xia, and Jianfei Yu. Comparative Opinion Quintuple Extraction from Product Reviews. EMNLP 2021.
 
 ## Installation and Run
 We divide our code into two branches : main and codeoutput. In particular, we train our model in branch main and generate output format in branch codeoutput.
