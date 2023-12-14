@@ -46,7 +46,7 @@ After finish training data, there are three models saved in folder PreTrainModel
 git clone -b codeoutput https://github.com/duyvu1110/ComOM_VLSP2023.git
 ```
 
-#### Step 2: Move the output folder PreTrainModel from training phase to the newly clone folder
+#### Step 2: Move the output folder PreTrainModel from training phase to the newly cloned folder
 
 #### Step 3: Put test data in the data folder
 Example: 'path/ComOM_VLSP2023//data/smartphone/VLSP2023_ComOM_testing_v2/test_0001.txt'
